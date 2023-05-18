@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/DATVEXE.iml" filepath="$PROJECT_DIR$/.idea/DATVEXE.iml" />
-      <module fileurl="file://$PROJECT_DIR$/datvexe/DatVeXe.iml" filepath="$PROJECT_DIR$/datvexe/DatVeXe.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DatVeXe.iml" filepath="$PROJECT_DIR$/DatVeXe.iml" />
     </modules>
   </component>
 </project>
