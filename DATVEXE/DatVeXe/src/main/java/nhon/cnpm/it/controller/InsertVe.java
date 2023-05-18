@@ -20,7 +20,7 @@ public class InsertVe extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String listVe = request.getParameter("ve");
+        String listVe = request.getParameter("Ve");
         String[] list = listVe.trim().split(";");
         String bus = request.getParameter("bus");
         String trip = request.getParameter("trip");
@@ -33,7 +33,7 @@ public class InsertVe extends HttpServlet {
             if (!TripService.getInstance().checkCart(ve, trip, bus)) {
                 check.append(ve+";");
             } else {
-//                7. Hệ thống kiểm tra ghi thông tin vé vào bảng "ve" ở database và chuyển vé vào giỏ hàng chờ thanh toán
+//                7. Hệ thống kiểm tra ghi thông tin vé vào bảng "Ve" ở database và chuyển vé vào giỏ hàng chờ thanh toán
                 TripService.getInstance().addVeToCart(email, phone, ve, name, trip, bus);
             }
         }

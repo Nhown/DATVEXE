@@ -367,12 +367,12 @@
                 text+=  $(this).text()+";";
                 $(".choose-diagram").text(text);
                 changeColor("blue");
-                $("#ve").val(text);
+                $("#Ve").val(text);
             } else {
                 changeColor("#666666");
                 text =text.replace(new RegExp($(this).text()+";", "g"), "");
                 $(".choose-diagram").text(text);
-                $("#ve").val(text);
+                $("#Ve").val(text);
             }
         });
     });
