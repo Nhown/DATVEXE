@@ -143,6 +143,7 @@
                                     </p>
                             </div><!--/.packages-para-->
                             <div class="about-btn">
+<%--                                bước 1: người dùng chọn vào button đặt vé ở trang dánh sách (listTour.jsp)--%>
                                 <a href="/DatVeXe/ChosenSit?id=<%=trip.getId()%>">
                                 <button class="about-view packages-btn">
                                     Đặt vé

@@ -169,8 +169,7 @@
                             <div class="modal-body">
                                 <form action="/DatVeXe/InsertVe" method="post" class="input-information">
                                     <input id="ve" name="ve" value="" style="display: none">
-                                    <%
-
+                                    <% // 6.1 thông báo lỗi trên form
                                         String errorMessage = (String) request.getAttribute("errorMessage");
                                         if (errorMessage != null) {
                                     %>
@@ -181,6 +180,7 @@
                                     <input id="xe" name="bus" value="<%=bus.getId()%>" style="display: none">
                                     <input id="trip" name="trip" value="<%=trip.getId()%>" style="display: none">
                                     <label for="phone">Số điện thoại</label>
+<%--                                    bước 4-5-6 : hiển thị form(4), người dùng nhập(5) và bấm xác nhận(6)--%>
                                     <input type="number" id="phone" name="phone" placeholder="Số điện thoại..">
 
                                     <label for="name">Họ Tên</label>
@@ -211,9 +211,11 @@
                         <div></div>
 
                         <div></div>
+<%--                        Bước 3. Người dùng chọn chỗ ngồi trên xe sau đó bấm vào button xác nhận ở bên dưới góc phải của trang--%>
                        <% List<String> list = (List<String>) request.getAttribute("listChairCode");
                        for(String l: list){%>
                         <div class="customer">
+
                             <p class="paragraph"><i class="fa-solid fa-user gray "></i>  <%=l%></p>
                         </div>
                       <%}%>

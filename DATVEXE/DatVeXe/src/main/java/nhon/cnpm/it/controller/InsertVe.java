@@ -33,13 +33,16 @@ public class InsertVe extends HttpServlet {
             if (!TripService.getInstance().checkCart(ve, trip, bus)) {
                 check.append(ve+";");
             } else {
+//                7. Hệ thống kiểm tra ghi thông tin vé vào bảng "ve" ở database và chuyển vé vào giỏ hàng chờ thanh toán
                 TripService.getInstance().addVeToCart(email, phone, ve, name, trip, bus);
             }
         }
         if(check!=null) {
             request.setAttribute("errorMessage", "ghế :" + check.toString() + "đã được chọn ở giỏ hàng của bạn");
-            response.sendRedirect("/DatVeXe/ChosenSit?id" + trip);
+           request.getRequestDispatcher("/DatVeXe/ChosenSit?id" + trip).forward(request, response);
         }else {
+//            8. thông báo vé đã được thêm thành công
+            request.setAttribute("successMessage",   " vé đã được chọn ở giỏ hàng của bạn");
             response.sendRedirect("listTour.jsp");
         }
     }
