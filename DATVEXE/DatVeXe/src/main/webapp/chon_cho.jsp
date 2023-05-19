@@ -167,16 +167,16 @@
                             </div>
 
                             <div class="modal-body">
-                                <form action="/DatVeXe/InsertVe" method="post" class="input-information">
+                                <form action="/InsertVe" method="post" class="input-information">
                                     <input id="ve" name="ve" value="" style="display: none">
-                                    <% // 6.1 thông báo lỗi trên form
-                                        String errorMessage = (String) request.getAttribute("errorMessage");
-                                        if (errorMessage != null) {
-                                    %>
-                                    <p><%= errorMessage %></p>
-                                    <%
-                                        }
-                                    %>
+<%--                                    <% // 6.1 thông báo lỗi trên form--%>
+<%--                                        String errorMessage = (String) request.getAttribute("errorMessage");--%>
+<%--                                        if (errorMessage != null) {--%>
+<%--                                    %>--%>
+<%--                                    <p><%= errorMessage %></p>--%>
+<%--                                    <%--%>
+<%--                                        }--%>
+<%--                                    %>--%>
                                     <input id="xe" name="bus" value="<%=bus.getId()%>" style="display: none">
                                     <input id="trip" name="trip" value="<%=trip.getId()%>" style="display: none">
                                     <label for="phone">Số điện thoại</label>

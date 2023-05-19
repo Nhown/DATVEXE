@@ -104,7 +104,7 @@ public class TripService {
 
     public static void main(String[] args) {
 
-        System.out.println(TripService.getInstance().checkCart("p001","tx001","xe001"));
+        System.out.println(TripService.getInstance().checkCart("p009","tx007","xe001"));
     }
 
 

@@ -118,7 +118,17 @@
                 Duis aute irure dolor in velit esse cillum dolore eu fugiat nulla.
             </p>
         </div><!--/.gallery-header-->
-
+        <%
+            String successMessage = (String) request.getAttribute("successMessage");
+            if (successMessage != null && !successMessage.isEmpty()) {
+        %>
+        <script>
+            // Hiển thị dialog thông báo thành công
+            alert("<%= successMessage %>");
+        </script>
+        <%
+            }
+        %>
         <div class="packages-content">
             <div class="row">
                 <% List<Trip> list = TripService.getInstance().getAllTrip();
@@ -143,7 +153,8 @@
                                     </p>
                             </div><!--/.packages-para-->
                             <div class="about-btn">
-                                <a href="/DatVeXe/ChosenSit?id=<%=trip.getId()%>">
+<%--                                bước 1: người dùng chọn vào button đặt vé ở trang dánh sách (listTour.jsp)--%>
+                                <a href="/ChosenSit?id=<%=trip.getId()%>">
                                 <button class="about-view packages-btn">
                                     Đặt vé
                                 </button>
