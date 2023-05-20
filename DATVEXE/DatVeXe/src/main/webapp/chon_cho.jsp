@@ -135,101 +135,87 @@
                 <p>Giá vé: <%=trip.getPrice()%> VNĐ</p>
             </div>
         </div>
-        <div id="ticket-diagram-gh-16">
-            <div class="right">
-                <div class="note">
-                    <h1>Chú thích</h1>
-                    <div class="note-list">
-                        <div class="note-item">
-                            <i class="fa-solid fa-user "></i>
-                            <p>:Còn trống</p>
-                        </div>
-                        <div class="note-item">
-                            <i class="fa-solid fa-user not-available"></i>
-                            <p>:Đã được đặt</p>
-                        </div>
-                        <div class="note-item">
-                            <i class="fa-solid fa-user choose"></i>
-                            <p>:Bạn đã chọn</p>
-                        </div>
-                    </div>
-                    <h1 style="margin-top: 50px">Ghế được chọn</h1>
-                    <div class="choose-diagram"></div>
-                </div>
+    <div id="ticket-diagram-gh-16">
+        <div class="right">
+            <div class="note">
 
-                <!-- Modal -->
-                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                    <div class="modal-dialog" role="document" style="margin-top: 100px">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                <h4 class="modal-title" id="myModalLabel">Điền Thông Tin</h4>
-                            </div>
-
-                            <div class="modal-body">
-                                <form action="/InsertVe" method="post" class="input-information">
-                                    <input id="ve" name="ve" value="" style="display: none">
-<%--                                    <% // 6.1 thông báo lỗi trên form--%>
-<%--                                        String errorMessage = (String) request.getAttribute("errorMessage");--%>
-<%--                                        if (errorMessage != null) {--%>
-<%--                                    %>--%>
-<%--                                    <p><%= errorMessage %></p>--%>
-<%--                                    <%--%>
-<%--                                        }--%>
-<%--                                    %>--%>
-                                    <input id="xe" name="bus" value="<%=bus.getId()%>" style="display: none">
-                                    <input id="trip" name="trip" value="<%=trip.getId()%>" style="display: none">
-                                    <label for="phone">Số điện thoại</label>
-<%--                                    bước 4-5-6 : hiển thị form(4), người dùng nhập(5) và bấm xác nhận(6)--%>
-                                    <input type="number" id="phone" name="phone" placeholder="Số điện thoại..">
-
-                                    <label for="name">Họ Tên</label>
-                                    <input type="text" id="name" name="name" placeholder="Tên của bạn..">
-
-                                    <label for="email">Email (Có hoặc Không)</label>
-                                    <input type="text" id="email" name="email" placeholder="Email của bạn..">
-
-                                    <input type="submit" value="Xác nhận" )>
-                                </form>
-                            </div>
-                            <!--                            <div class="modal-footer">-->
-                            <!--                                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>-->
-                            <!--                                <button type="button" class="btn btn-primary">Đặt Vé</button>-->
-                            <!--                            </div>-->
-                        </div>
-                    </div>
-                </div>
+                <h1 style="margin-top: 50px">Ghế được chọn</h1>
+                <div class="choose-diagram"></div>
             </div>
-            <div class="left">
-                <div class="ticket-diagram">
-                    <h1>Sơ đồ vé</h1>
-                    <div class="diagram">
-                        <div class="driver not-available">
-                            <i class="fa-solid fa-user"></i>
-                            <p>Tài xế</p>
+
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document" style="margin-top: 100px">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Điền Thông Tin</h4>
                         </div>
-                        <div></div>
 
-                        <div></div>
-<%--                        Bước 3. Người dùng chọn chỗ ngồi trên xe sau đó bấm vào button xác nhận ở bên dưới góc phải của trang--%>
-                       <% List<String> list = (List<String>) request.getAttribute("listChairCode");
-                       for(String l: list){%>
-                        <div class="customer">
+                        <div class="modal-body">
+                            <form action="/InsertVe" method="post" class="input-information">
+                                <input id="ve" name="ve" value="" style="display: none">
+                                <%--                                    <% // 6.1 thông báo lỗi trên form--%>
+                                <%--                                        String errorMessage = (String) request.getAttribute("errorMessage");--%>
+                                <%--                                        if (errorMessage != null) {--%>
+                                <%--                                    %>--%>
+                                <%--                                    <p><%= errorMessage %></p>--%>
+                                <%--                                    <%--%>
+                                <%--                                        }--%>
+                                <%--                                    %>--%>
+                                <input id="xe" name="bus" value="<%=bus.getId()%>" style="display: none">
+                                <input id="trip" name="trip" value="<%=trip.getId()%>" style="display: none">
+                                <label for="phone">Số điện thoại</label>
+                                <%--                                    bước 4-5-6 : hiển thị form(4), người dùng nhập(5) và bấm xác nhận(6)--%>
+                                <input type="number" id="phone" name="phone" placeholder="Số điện thoại..">
 
-                            <p class="paragraph"><i class="fa-solid fa-user gray "></i>  <%=l%></p>
+                                <label for="name">Họ Tên</label>
+                                <input type="text" id="name" name="name" placeholder="Tên của bạn..">
+
+                                <label for="email">Email (Có hoặc Không)</label>
+                                <input type="text" id="email" name="email" placeholder="Email của bạn..">
+
+                                <input type="submit" value="Xác nhận" )>
+                            </form>
                         </div>
-                      <%}%>
-
+                        <!--                            <div class="modal-footer">-->
+                        <!--                                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>-->
+                        <!--                                <button type="button" class="btn btn-primary">Đặt Vé</button>-->
+                        <!--                            </div>-->
                     </div>
-
-                    <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-                        Xác nhận
-                    </button>
                 </div>
             </div>
         </div>
+        <div class="left">
+            <div class="ticket-diagram">
+                <h1>Sơ đồ vé</h1>
+                <div class="diagram">
+                    <div class="driver not-available">
+                        <i class="fa-solid fa-user"></i>
+                        <p>Tài xế</p>
+                    </div>
+                    <div></div>
+
+                    <div></div>
+                    <%--                        Bước 3. Người dùng chọn chỗ ngồi trên xe sau đó bấm vào button xác nhận ở bên dưới góc phải của trang--%>
+                    <% List<String> list = (List<String>) request.getAttribute("listChairCode");
+                        for(String l: list){%>
+                    <div class="customer">
+
+                        <p class="paragraph"><i class="fa-solid fa-user gray "></i>  <%=l%></p>
+                    </div>
+                    <%}%>
+
+                </div>
+
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                    Xác nhận
+                </button>
+            </div>
+        </div>
     </div>
+</div>
 <!-- footer-copyright start -->
 <footer  class="footer-copyright">
     <div class="container">
@@ -354,7 +340,7 @@
 <script src="assets/js/custom.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    function changeColor(color) {
+    function changeColor(color,text) {
         var element = document.querySelector(".fa-solid.fa-user.gray ");
         element.style.color = color;
     }
