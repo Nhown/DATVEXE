@@ -83,6 +83,7 @@ public class TripService {
             if (maghe.equals(ve.getMaghe()) && id_tuyen.equals(ve.getId_tuyen()) && id_xe.equals(ve.getId_xe())) {
                 return false;
             }
+            break;
         }
         return true;
 

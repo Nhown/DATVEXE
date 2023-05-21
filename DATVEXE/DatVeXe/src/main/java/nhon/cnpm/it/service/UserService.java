@@ -24,7 +24,7 @@ public class UserService {
 
         }
     }
-        //thay đổi password
+    //thay đổi password
     public void changePassword(String newPass, String Id) {
         JDBIConnector.get().withHandle(handle -> {
             String sql = "UPDATE User SET pass=? WHERE id =?";
@@ -33,6 +33,29 @@ public class UserService {
                     .bind(1, Id)
                     .execute();
         });
+    }
+    //     4. UserService lấy dữ liệu từ database
+    public User getUser() {
+        return JDBIConnector.get().withHandle(handle ->
+                handle.createQuery("SELECT id, email, pass,name,phone,address,birthday  FROM user WHERE id like 'u0001'")
+                        .mapToBean(User.class)
+                        .first());
+
+    }
+    //    9. UserService thay đổi dữ liệu trên database
+    public void changeInfor(String id, String name, String phone, String address, String birthday) {
+        JDBIConnector.get().withHandle(handle -> {
+                    handle.createUpdate("UPDATE user SET name=?,phone=?,address=?,birthday=? WHERE id=?")
+                            .bind(0, name)
+                            .bind(1,phone)
+                            .bind(2,address)
+                            .bind(3,birthday)
+                            .bind(4,id)
+                            .execute();
+                    return null;
+                }
+        );
+
     }
 
 }

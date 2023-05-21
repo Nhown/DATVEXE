@@ -135,6 +135,13 @@
                 <p>Giá vé: <%=trip.getPrice()%> VNĐ</p>
             </div>
         </div>
+
+    <script>
+        <% if (request.getAttribute("errorMessage") != null) { %>
+        alert("<%= request.getAttribute("errorMessage") %>");
+        <% } %>
+    </script>
+
     <div id="ticket-diagram-gh-16">
         <div class="right">
             <div class="note">
@@ -153,7 +160,7 @@
                         </div>
 
                         <div class="modal-body">
-                            <form action="/InsertVe" method="post" class="input-information">
+                            <form action="/InsertVe" method="get" class="input-information">
                                 <input id="ve" name="ve" value="" style="display: none">
                                 <%--                                    <% // 6.1 thông báo lỗi trên form--%>
                                 <%--                                        String errorMessage = (String) request.getAttribute("errorMessage");--%>
