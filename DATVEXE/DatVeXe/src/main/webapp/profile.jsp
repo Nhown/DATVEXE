@@ -1,3 +1,5 @@
+<%@ page import="nhon.cnpm.it.service.UserService" %>
+<%@ page import="nhon.cnpm.it.bean.User" %>
 <!DOCTYPE html>
 <html lang="en">
 <%@ page contentType="text/html; charset=UTF-8" language="java" pageEncoding="UTF-8" %>
@@ -90,10 +92,13 @@
                                 <li class="smooth-menu"><a href="#spo">Special Offers</a></li>
                                 <li class="smooth-menu"><a href="#blog">blog</a></li>
                                 <li class="smooth-menu"><a href="#subs">subscription</a></li>
+                                <!--										1. Người dùng chọn thông tin cá nhân ở bên phải thanh menu-->
                                 <li>
-                                    <button class="book-btn">book now
+                                    <!--											2. Chuyển đên trang thông tin cá nhân-->
+                                    <button class="book-btn" onclick="location.href='	profile.jsp'">profile
                                     </button>
-                                </li><!--/.project-btn-->
+                                </li><!--/.project-btn--> <!--/.project-btn-->
+
                             </ul>
                         </div><!-- /.navbar-collapse -->
                     </div><!-- /.main-menu-->
@@ -107,179 +112,200 @@
 <!-- main-menu End -->
 <div style="height: 76px; background: #71a2c4"></div>
 <div class="container rounded bg-white mt-5 mb-5">
-    <div class="row">
-        <div class="col-md-3 border-right">
-            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span class="font-weight-bold">Edogaru</span><span class="text-black-50">edogaru@mail.com.my</span><span> </span></div>
-        </div>
-        <%-- Kiểm tra xem có thông báo lỗi hay không --%>
-        <% if (request.getAttribute("error") != null) { %>
-        <div class="alert alert-danger">
-            <%= request.getAttribute("error") %>
-        </div>
-        <% } %>
-
-        <%-- Kiểm tra xem có thông báo thành công hay không --%>
-        <% if (request.getAttribute("success") != null) { %>
-        <div class="alert alert-success">
-            <%= request.getAttribute("success") %>
-        </div>
-        <% } %>
-        <div class="col-md-5 border-right">
-            <div class="p-3 py-5">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h4 class="text-right">Thông tin cá nhân</h4>
+    <div class="container rounded bg-white mt-5 mb-5">
+        <div class="row">
+            <div class="col-md-3 border-right">
+                <%--            3. gọi đến UserService lấy dữ liệu người dùng&ndash;%&gt;--%>
+                <% User user = new UserService().getUser();%>
+                <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                    <img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
+                    <%--                5. Hiển thị thông tin người dùng lên giao diện--%>
+                    <span class="font-weight-bold"><%=user.getName()%></span>
+                    <span class="text-black-50"><%=user.getEmail()%></span>
+                    <span> </span>
                 </div>
-<!--                <div class="row mt-2">-->
-<!--                    <div class="col-md-6"><label class="labels">Name</label><input type="text" class="form-control" placeholder="first name" value=""></div>-->
-<!--                    <div class="col-md-6"><label class="labels">Surname</label><input type="text" class="form-control" value="" placeholder="surname"></div>-->
-<!--                </div>-->
-                <div class="row mt-3">
-                    <div class="col-md-12"><label class="labels">Họ tên</label><input type="text" class="form-control" placeholder="Nhập họ và tên" value=""></div>
-                    <div class="col-md-12"><label class="labels">Email</label><input type="text" class="form-control" placeholder="Nhập email" value=""></div>
-                    <div class="col-md-12"><label class="labels">Số điện thoại</label><input type="text" class="form-control" placeholder="Nhập số điện thoại" value=""></div>
-                    <div class="col-md-12"><label class="labels">Địa chỉ</label><input type="text" class="form-control" placeholder="Nhập địa chỉ" value=""></div>
-                    <div class="col-md-12"><label class="labels">Ngày, tháng, năm sinh</label><input type="text" class="form-control" placeholder="Nhập ngày, tháng, năm sinh" value=""></div>
-<!--                    <div class="col-md-12"><label class="labels">State</label><input type="text" class="form-control" placeholder="enter address line 2" value=""></div>-->
-<!--                    <div class="col-md-12"><label class="labels">Area</label><input type="text" class="form-control" placeholder="enter address line 2" value=""></div>-->
-<!--                    <div class="col-md-12"><label class="labels">Education</label><input type="text" class="form-control" placeholder="education" value=""></div>-->
-                </div>
-<!--                <div class="row mt-3">-->
-<!--                    <div class="col-md-6"><label class="labels">Country</label><input type="text" class="form-control" placeholder="country" value=""></div>-->
-<!--                    <div class="col-md-6"><label class="labels">State/Region</label><input type="text" class="form-control" value="" placeholder="state"></div>-->
-<!--                </div>-->
-                <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Thay đổi thông tin cá nhân</button></div>
             </div>
-        </div>
-        <div class="col-md-4">
-            <form action="ChangePassword" method="post">
-            <div class="p-3 py-5">
 
-                <div class="d-flex justify-content-between align-items-center experience"><span>Mật khẩu</span></div><br>
-                <div class="col-md-12"><label class="labels">Mật khẩu cũ</label><input type="password" class="form-control" placeholder="Nhập mật khẩu cũ" id="oldPass" name="oldPass" required></div><br>
-                <div class="col-md-12"><label class="labels">Mật khẩu mới</label><input type="password" class="form-control" placeholder="Nhập mật khẩu mới" id="newPass" name="newPass" required></div>
-                <div class="col-md-12"><label class="labels">Nhập lại mật khẩu mới</label><input type="password" class="form-control" placeholder="Nhập lại mật khẩu mới" id="confirmPass" name="confirmPass" required></div>
-                <div class="mt-5 text-center"><button class="btn btn-primary password-button mt-5" type="submit">Thay đổi mật khẩu</button></div>
+            <div class="col-md-5 border-right">
+                <%--            7. Gửi các thông tin đến lớp changeProfile để xử lý--%>
+                <form action="changeProfile" method="POST">
+                    <div class="p-3 py-5">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h4 class="text-right">Profile Settings</h4>
+                        </div>
+                        <div class="row mt-3">
+                            <%--10. Hiển thị thông tin mới, thông báo cập nhật thành công--%>
+                            <%String error = (String) request.getAttribute("message");%>
+                            <%=error == null ? "" : error%>
+                            <div class="col-md-12" >
+                                <input name="id" type="hidden" class="form-control" value="<%=user.getId()%>"
+                                ></div>
+                            <div class="col-md-12">
+                                <label class="labels">Name</label>
+                                <input name="name" type="text" class="form-control" placeholder="enter your name" value="<%=user.getName()%>">
+                            </div>
+                            <div class="col-md-12">
+                                <label class="labels">Mobile Number</label>
+                                <input name="phone" type="text" class="form-control" placeholder="enter phone number" value="<%=user.getPhone()%>">
+                            </div>
+                            <div class="col-md-12">
+                                <label class="labels">Address</label>
+                                <input name="address" type="text" class="form-control" placeholder="enter address" value="<%=user.getAddress()%>">
+                            </div>
+                            <div class="col-md-12">
+                                <label class="labels">Birthday</label>
+                                <input name="birthday" type="text" class="form-control" placeholder="enter birthday" value="<%=user.getBirthday()%>">
+                            </div>
+                        </div>
+                        <%--                    6. Người dùng thay đổi các thông tin muốn thay đổi và ấn nút Save Profile--%>
+                        <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Save Profile</button></div>
+                    </div>
+                </form>
             </div>
-            </form>
+            <div class="col-md-4">
+                <form action="ChangePassword" method="post">
+                    <div class="p-3 py-5">
+                        <div class="d-flex justify-content-between align-items-center experience">
+                            <span>Mật khẩu</span>
+                        </div><br>
+                        <%-- Kiểm tra xem có thông báo lỗi hay không --%>
+                        <% if (request.getAttribute("error") != null) { %>
+                        <div class="alert alert-danger">
+                            <%= request.getAttribute("error") %>
+                        </div>
+                        <% } %>
+
+                        <%-- Kiểm tra xem có thông báo thành công hay không --%>
+                        <% if (request.getAttribute("success") != null) { %>
+                        <div class="alert alert-success">
+                            <%= request.getAttribute("success") %>
+                        </div>
+                        <% } %>
+                        <div class="col-md-12"><label class="labels">Mật khẩu cũ</label><input type="password" class="form-control" placeholder="Nhập mật khẩu cũ" id="oldPass" name="oldPass" required></div><br>
+                        <div class="col-md-12"><label class="labels">Mật khẩu mới</label><input type="password" class="form-control" placeholder="Nhập mật khẩu mới" id="newPass" name="newPass" required></div>
+                        <div class="col-md-12"><label class="labels">Nhập lại mật khẩu mới</label><input type="password" class="form-control" placeholder="Nhập lại mật khẩu mới" id="confirmPass" name="confirmPass" required></div>
+                        <div class="mt-5 text-center"><button class="btn btn-primary password-button mt-5" type="submit">Thay đổi mật khẩu</button></div>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-</div>
-<!-- footer-copyright start -->
-<footer  class="footer-copyright">
-    <div class="container">
-        <div class="footer-content">
-            <div class="row">
+    <!-- footer-copyright start -->
+    <footer  class="footer-copyright">
+        <div class="container">
+            <div class="footer-content">
+                <div class="row">
 
-                <div class="col-sm-3">
-                    <div class="single-footer-item">
-                        <div class="footer-logo">
-                            <a href="index.html">
-                                tour<span>Nest</span>
-                            </a>
-                            <p>
-                                best travel agency
-                            </p>
-                        </div>
-                    </div><!--/.single-footer-item-->
-                </div><!--/.col-->
+                    <div class="col-sm-3">
+                        <div class="single-footer-item">
+                            <div class="footer-logo">
+                                <a href="index.html">
+                                    tour<span>Nest</span>
+                                </a>
+                                <p>
+                                    best travel agency
+                                </p>
+                            </div>
+                        </div><!--/.single-footer-item-->
+                    </div><!--/.col-->
 
-                <div class="col-sm-3">
-                    <div class="single-footer-item">
-                        <h2>link</h2>
-                        <div class="single-footer-txt">
-                            <p><a href="#">home</a></p>
-                            <p><a href="#">destination</a></p>
-                            <p><a href="#">spacial packages</a></p>
-                            <p><a href="#">special offers</a></p>
-                            <p><a href="#">blog</a></p>
-                            <p><a href="#">contacts</a></p>
-                        </div><!--/.single-footer-txt-->
-                    </div><!--/.single-footer-item-->
+                    <div class="col-sm-3">
+                        <div class="single-footer-item">
+                            <h2>link</h2>
+                            <div class="single-footer-txt">
+                                <p><a href="#">home</a></p>
+                                <p><a href="#">destination</a></p>
+                                <p><a href="#">spacial packages</a></p>
+                                <p><a href="#">special offers</a></p>
+                                <p><a href="#">blog</a></p>
+                                <p><a href="#">contacts</a></p>
+                            </div><!--/.single-footer-txt-->
+                        </div><!--/.single-footer-item-->
 
-                </div><!--/.col-->
+                    </div><!--/.col-->
 
-                <div class="col-sm-3">
-                    <div class="single-footer-item">
-                        <h2>popular destination</h2>
-                        <div class="single-footer-txt">
-                            <p><a href="#">china</a></p>
-                            <p><a href="#">venezuela</a></p>
-                            <p><a href="#">brazil</a></p>
-                            <p><a href="#">australia</a></p>
-                            <p><a href="#">london</a></p>
-                        </div><!--/.single-footer-txt-->
-                    </div><!--/.single-footer-item-->
-                </div><!--/.col-->
+                    <div class="col-sm-3">
+                        <div class="single-footer-item">
+                            <h2>popular destination</h2>
+                            <div class="single-footer-txt">
+                                <p><a href="#">china</a></p>
+                                <p><a href="#">venezuela</a></p>
+                                <p><a href="#">brazil</a></p>
+                                <p><a href="#">australia</a></p>
+                                <p><a href="#">london</a></p>
+                            </div><!--/.single-footer-txt-->
+                        </div><!--/.single-footer-item-->
+                    </div><!--/.col-->
 
-                <div class="col-sm-3">
-                    <div class="single-footer-item text-center">
-                        <h2 class="text-left">contacts</h2>
-                        <div class="single-footer-txt text-left">
-                            <p>+1 (300) 1234 6543</p>
-                            <p class="foot-email"><a href="#">info@tnest.com</a></p>
-                            <p>North Warnner Park 336/A</p>
-                            <p>Newyork, USA</p>
-                        </div><!--/.single-footer-txt-->
-                    </div><!--/.single-footer-item-->
-                </div><!--/.col-->
+                    <div class="col-sm-3">
+                        <div class="single-footer-item text-center">
+                            <h2 class="text-left">contacts</h2>
+                            <div class="single-footer-txt text-left">
+                                <p>+1 (300) 1234 6543</p>
+                                <p class="foot-email"><a href="#">info@tnest.com</a></p>
+                                <p>North Warnner Park 336/A</p>
+                                <p>Newyork, USA</p>
+                            </div><!--/.single-footer-txt-->
+                        </div><!--/.single-footer-item-->
+                    </div><!--/.col-->
 
-            </div><!--/.row-->
+                </div><!--/.row-->
 
-        </div><!--/.footer-content-->
-        <hr>
-        <div class="foot-icons ">
-            <ul class="footer-social-links list-inline list-unstyled">
-                <li><a href="#" target="_blank" class="foot-icon-bg-1"><i class="fa fa-facebook"></i></a></li>
-                <li><a href="#" target="_blank" class="foot-icon-bg-2"><i class="fa fa-twitter"></i></a></li>
-                <li><a href="#" target="_blank" class="foot-icon-bg-3"><i class="fa fa-instagram"></i></a></li>
-            </ul>
-            <p>&copy; 2017 <a href="https://www.themesine.com">ThemeSINE</a>. All Right Reserved</p>
+            </div><!--/.footer-content-->
+            <hr>
+            <div class="foot-icons ">
+                <ul class="footer-social-links list-inline list-unstyled">
+                    <li><a href="#" target="_blank" class="foot-icon-bg-1"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="#" target="_blank" class="foot-icon-bg-2"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="#" target="_blank" class="foot-icon-bg-3"><i class="fa fa-instagram"></i></a></li>
+                </ul>
+                <p>&copy; 2017 <a href="https://www.themesine.com">ThemeSINE</a>. All Right Reserved</p>
 
-        </div><!--/.foot-icons-->
-        <div id="scroll-Top">
-            <i class="fa fa-angle-double-up return-to-top" id="scroll-top" data-toggle="tooltip" data-placement="top" title="" data-original-title="Back to Top" aria-hidden="true"></i>
-        </div><!--/.scroll-Top-->
-    </div><!-- /.container-->
+            </div><!--/.foot-icons-->
+            <div id="scroll-Top">
+                <i class="fa fa-angle-double-up return-to-top" id="scroll-top" data-toggle="tooltip" data-placement="top" title="" data-original-title="Back to Top" aria-hidden="true"></i>
+            </div><!--/.scroll-Top-->
+        </div><!-- /.container-->
 
-</footer><!-- /.footer-copyright-->
-<!-- footer-copyright end -->
+    </footer><!-- /.footer-copyright-->
+    <!-- footer-copyright end -->
 
-<script src="assets/js/jquery.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="assets/js/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
 
-<!--modernizr.min.js-->
-<script  src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+    <!--modernizr.min.js-->
+    <script  src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
 
 
-<!--bootstrap.min.js-->
-<script  src="assets/js/bootstrap.min.js"></script>
+    <!--bootstrap.min.js-->
+    <script  src="assets/js/bootstrap.min.js"></script>
 
-<!-- bootsnav js -->
-<script src="assets/js/bootsnav.js"></script>
+    <!-- bootsnav js -->
+    <script src="assets/js/bootsnav.js"></script>
 
-<!-- jquery.filterizr.min.js -->
-<script src="assets/js/jquery.filterizr.min.js"></script>
+    <!-- jquery.filterizr.min.js -->
+    <script src="assets/js/jquery.filterizr.min.js"></script>
 
-<script  src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script  src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
 
-<!--jquery-ui.min.js-->
-<script src="assets/js/jquery-ui.min.js"></script>
+    <!--jquery-ui.min.js-->
+    <script src="assets/js/jquery-ui.min.js"></script>
 
-<!-- counter js -->
-<script src="assets/js/jquery.counterup.min.js"></script>
-<script src="assets/js/waypoints.min.js"></script>
+    <!-- counter js -->
+    <script src="assets/js/jquery.counterup.min.js"></script>
+    <script src="assets/js/waypoints.min.js"></script>
 
-<!--owl.carousel.js-->
-<script  src="assets/js/owl.carousel.min.js"></script>
+    <!--owl.carousel.js-->
+    <script  src="assets/js/owl.carousel.min.js"></script>
 
-<!-- jquery.sticky.js -->
-<script src="assets/js/jquery.sticky.js"></script>
+    <!-- jquery.sticky.js -->
+    <script src="assets/js/jquery.sticky.js"></script>
 
-<!--datepicker.js-->
-<script  src="assets/js/datepicker.js"></script>
+    <!--datepicker.js-->
+    <script  src="assets/js/datepicker.js"></script>
 
-<!--Custom JS-->
-<script src="assets/js/custom.js"></script>
+    <!--Custom JS-->
+    <script src="assets/js/custom.js"></script>
 
 </body>
 </html>

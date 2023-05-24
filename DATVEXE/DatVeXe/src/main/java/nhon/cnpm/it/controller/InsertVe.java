@@ -39,8 +39,7 @@ public class InsertVe extends HttpServlet {
             request.setAttribute("successMessage", " vé đã được thêm ở giỏ hàng của bạn!");
             request.getRequestDispatcher("listTour.jsp").forward(request, response);
         }else{
-//            String errorMessage = "vé đã có ở giỏ hàng. Vui lòng kiểm tra lại và chọn vé khác!";
-//            response.sendRedirect("/ChosenSit?id="+trip+"?error=" + URLEncoder.encode(errorMessage, "UTF-8"));
+//          6.1 thông báo khi vé có ở giỏ hàng
             request.setAttribute("errorMessage", "vé đã có ở giỏ hàng. Vui lòng kiểm tra lại và chọn vé khác!");
             RequestDispatcher dispatcher = request.getRequestDispatcher("/ChosenSit?id="+trip);
             dispatcher.forward(request, response);

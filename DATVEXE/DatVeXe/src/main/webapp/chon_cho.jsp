@@ -160,20 +160,14 @@
                         </div>
 
                         <div class="modal-body">
+                            <%-- bước 5-6 : người dùng nhập(5) và bấm xác nhận(6)--%>
                             <form action="/InsertVe" method="get" class="input-information">
                                 <input id="ve" name="ve" value="" style="display: none">
-                                <%--                                    <% // 6.1 thông báo lỗi trên form--%>
-                                <%--                                        String errorMessage = (String) request.getAttribute("errorMessage");--%>
-                                <%--                                        if (errorMessage != null) {--%>
-                                <%--                                    %>--%>
-                                <%--                                    <p><%= errorMessage %></p>--%>
-                                <%--                                    <%--%>
-                                <%--                                        }--%>
-                                <%--                                    %>--%>
+
                                 <input id="xe" name="bus" value="<%=bus.getId()%>" style="display: none">
                                 <input id="trip" name="trip" value="<%=trip.getId()%>" style="display: none">
                                 <label for="phone">Số điện thoại</label>
-                                <%--                                    bước 4-5-6 : hiển thị form(4), người dùng nhập(5) và bấm xác nhận(6)--%>
+
                                 <input type="number" id="phone" name="phone" placeholder="Số điện thoại..">
 
                                 <label for="name">Họ Tên</label>
@@ -204,7 +198,7 @@
                     <div></div>
 
                     <div></div>
-                    <%--                        Bước 3. Người dùng chọn chỗ ngồi trên xe sau đó bấm vào button xác nhận ở bên dưới góc phải của trang--%>
+                    <%--  Bước 3. Người dùng chọn chỗ ngồi trên xe sau đó bấm vào button xác nhận ở bên dưới góc phải của trang--%>
                     <% List<String> list = (List<String>) request.getAttribute("listChairCode");
                         for(String l: list){%>
                     <div class="customer">
@@ -216,6 +210,7 @@
                 </div>
 
                 <!-- Button trigger modal -->
+                <%-- bước 4 : hiển thị form(4)--%>
                 <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
                     Xác nhận
                 </button>
